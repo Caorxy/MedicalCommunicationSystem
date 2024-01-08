@@ -1,0 +1,28 @@
+﻿<Application x:Class="MedicalCommunicationSystem.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:viewModel="clr-namespace:MedicalCommunicationSystem.MVVM.ViewModel"
+             xmlns:view="clr-namespace:MedicalCommunicationSystem.MVVM.View"
+             xmlns:local="clr-namespace:MedicalCommunicationSystem"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <DataTemplate DataType="{x:Type viewModel:LoginViewModel}">
+                <view:LoginView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
+                <view:HomeView/>
+            </DataTemplate>
+            
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Theme/HomeButtonTheme.xaml"/>
+                <ResourceDictionary Source="Theme/ExitButtonTheme.xaml"/>
+                <ResourceDictionary Source="Theme/GradientBrush.xaml"/>
+                <ResourceDictionary Source="Theme/BasicTextTheme.xaml"/>
+                <ResourceDictionary Source="Theme/TextBoxTheme.xaml"/>
+                <ResourceDictionary Source="Theme/PasswordBoxTheme.xaml"/>
+                <ResourceDictionary Source="Theme/ChooseButtonTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>    
+    </Application.Resources>
+</Application>
