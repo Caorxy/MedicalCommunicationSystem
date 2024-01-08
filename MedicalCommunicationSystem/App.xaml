@@ -10,12 +10,16 @@
             <DataTemplate DataType="{x:Type viewModel:LoginViewModel}">
                 <view:LoginView/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
-                <view:HomeView/>
+            <DataTemplate DataType="{x:Type viewModel:DoctorPanelViewModel}">
+                <view:DoctorPanelView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:PatientPanelViewModel}">
+                <view:PatientPanelView/>
             </DataTemplate>
             
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Theme/HomeButtonTheme.xaml"/>
+                <ResourceDictionary Source="Theme/ButtonTheme.xaml"/>
                 <ResourceDictionary Source="Theme/ExitButtonTheme.xaml"/>
                 <ResourceDictionary Source="Theme/GradientBrush.xaml"/>
                 <ResourceDictionary Source="Theme/BasicTextTheme.xaml"/>

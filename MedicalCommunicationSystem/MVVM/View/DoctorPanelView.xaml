@@ -1,0 +1,137 @@
+<UserControl x:Class="MedicalCommunicationSystem.MVVM.View.DoctorPanelView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:MedicalCommunicationSystem.MVVM.View"
+             xmlns:viewModel="clr-namespace:MedicalCommunicationSystem.MVVM.ViewModel"
+             mc:Ignorable="d"
+             d:DesignHeight="800" d:DesignWidth="1600">
+    <UserControl.DataContext><viewModel:MainViewModel />
+    </UserControl.DataContext>
+    <Grid
+        Background="LightBlue"
+        Opacity="1"
+    >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2.5*"/>
+            <RowDefinition Height="2.5*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.RowSpan="4"
+            Background="LightSalmon">
+            <Grid>
+                <TextBlock
+                    Text="Mr Smith"
+                    FontSize="45"
+                    FontWeight="Bold"
+                    FontFamily="Century Gothic"
+                    Foreground="MidnightBlue"
+                    HorizontalAlignment="Center"
+                    Margin="0 40 0 0"
+                    />
+                <TextBlock
+                    Text="Doctor Panel"
+                    FontSize="35"
+                    FontWeight="Bold"
+                    FontFamily="Century Gothic"
+                    Foreground="MidnightBlue"
+                    HorizontalAlignment="Center"
+                    Margin="0 100 0 0"
+                    />
+            </Grid>
+        </Border>
+        
+        <Border Grid.Row="1" Grid.Column="1" Grid.RowSpan="2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+        
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Button Name="PatientButton" Grid.Row="0" Grid.Column="1"
+                        Margin="20,0,20, 10" 
+                        Style="{StaticResource ButtonStyle}"
+                        Command="{Binding AboutViewCommand}"
+                >
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+                    <StackPanel>
+                        <Image Source="../../Images/user.png"
+                               Height="120" />
+                        <TextBlock FontSize="20" TextAlignment="Center" Foreground="White" FontWeight="DemiBold" Margin="0,10,0,5">Patients</TextBlock>
+                    </StackPanel>
+                </Button>
+                
+                <Button Name="ScheduleButton" Grid.Row="0" Grid.Column="2"
+                        Margin="20,0,20, 10" 
+                        Style="{StaticResource ButtonStyle}"
+                        Command="{Binding AboutViewCommand}"
+                >
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+                    <StackPanel>
+                        <Image Source="../../Images/schedule.png"
+                               Height="120" />
+                        <TextBlock FontSize="20" TextAlignment="Center" Foreground="White" FontWeight="DemiBold" Margin="0,10,0,5">Schedule</TextBlock>
+                    </StackPanel>
+                </Button>
+                
+                <Button Name="PrescriptionButton" Grid.Row="1" Grid.Column="1"
+                        Margin="20,20,20, 0" 
+                        Style="{StaticResource ButtonStyle}"
+                        Command="{Binding AboutViewCommand}"
+                >
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+                    <StackPanel>
+                        <Image Source="../../Images/prescription.png"
+                               Height="120" />
+                        <TextBlock FontSize="20" TextAlignment="Center" Foreground="White" FontWeight="DemiBold" Margin="0,10,0,5">Prescriptions</TextBlock>
+                    </StackPanel>
+                </Button>
+                
+                <Button Name="LogoutButton" Grid.Row="1" Grid.Column="2"
+                        Margin="20,20,20, 0" 
+                        Style="{StaticResource ButtonStyle}"
+                        Command="{Binding LogoutCommand}"
+                >
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+                    <StackPanel>
+                        <Image Source="/Images/logout.png"
+                               Height="120" />
+                        <TextBlock FontSize="20" TextAlignment="Center" Foreground="White" FontWeight="DemiBold" Margin="0,10,0,5">Log out</TextBlock>
+                    </StackPanel>
+                </Button>
+            </Grid>
+        </Border>
+        
+    </Grid>
+</UserControl>

@@ -3,9 +3,9 @@ using System.Windows.Controls;
 
 namespace MedicalCommunicationSystem.MVVM.View;
 
-public partial class HomeView : UserControl
+public partial class PatientPanelView : UserControl
 {
-    public HomeView()
+    public PatientPanelView()
     {
         InitializeComponent();
         DataContext = Application.Current.MainWindow?.DataContext;

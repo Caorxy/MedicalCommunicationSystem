@@ -9,8 +9,22 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Images\" />
       <Folder Include="MVVM\Model\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Images\logout.png" />
+      <Resource Include="Images\logout.png" />
+      <None Remove="Images\prescription.png" />
+      <Resource Include="Images\prescription.png" />
+      <None Remove="Images\schedule.png" />
+      <Resource Include="Images\schedule.png" />
+      <None Remove="Images\user.png" />
+      <Resource Include="Images\user.png" />
+      <None Remove="Images\development.png" />
+      <Resource Include="Images\development.png" />
+      <None Remove="Images\result.png" />
+      <Resource Include="Images\result.png" />
     </ItemGroup>
 
 </Project>

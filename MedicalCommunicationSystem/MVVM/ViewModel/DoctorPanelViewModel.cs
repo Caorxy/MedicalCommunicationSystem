@@ -2,7 +2,7 @@ using MedicalCommunicationSystem.Core;
 
 namespace MedicalCommunicationSystem.MVVM.ViewModel;
 
-public class HomeViewModel : ObservableObject
+public class DoctorPanelViewModel : ObservableObject
 {
     
 }
