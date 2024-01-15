@@ -8,14 +8,13 @@
         mc:Ignorable="d"
         Title="Medical Communication System" 
         Height="600" Width="800"
-        ResizeMode="NoResize"
-        WindowStyle="None" 
-        WindowState="Maximized"
         Topmost="True"
         FontFamily="Fonts/#Lato"
->
+><!--ResizeMode="NoResize"
+        WindowStyle="None" 
+        WindowState="Maximized"-->
 
-    
+
     <Window.DataContext>
         <viewModel:MainViewModel />
     </Window.DataContext>

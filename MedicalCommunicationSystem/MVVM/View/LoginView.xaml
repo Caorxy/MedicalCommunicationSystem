@@ -5,128 +5,173 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:MedicalCommunicationSystem.MVVM.View"
              xmlns:viewModel="clr-namespace:MedicalCommunicationSystem.MVVM.ViewModel"
+             xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d"
              d:DesignHeight="800" d:DesignWidth="800">
     <UserControl.DataContext><viewModel:MainViewModel />
     </UserControl.DataContext>
-    <Grid
-        Background="LightBlue"
-        Opacity="1"
-    >
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        
-        <Grid Grid.Row="1" Grid.Column="1"
-            Background="Aquamarine"
-            >
+    <Grid>
+        <Grid
+            Background="LightBlue"
+            Opacity="1"
+        >
             <Grid.RowDefinitions>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="6*"/>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
             
-            <TextBlock
-                Style="{StaticResource TextStyle}"
-                Text="Sign In"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Bottom"
-                FontSize="50"
-                FontFamily="Century Gothic"
-            />
-            
-            <Border Grid.Row="1"
-                Width="400"
-                Height="280"
-                CornerRadius="10">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    
-                    <TextBlock
-                        Style="{StaticResource TextStyle}"
-                        FontSize="20"
-                        Margin="0 0 0 20"
-                        Text="Your Personal ID"
-                        FontFamily="Century Gothic"
-                        />
-                    <TextBox
-                            Grid.Row="0" Text=""
-                        Name="IdTyped"
-                        Style="{StaticResource TextBoxStyle}">
-                        <TextBox.Resources>
-                            <Style TargetType="Border">
-                                <Setter Property="CornerRadius" Value="5"/>
-                            </Style>
-                        </TextBox.Resources>
-                    </TextBox>
-                    
-                    <TextBlock Grid.Row="1"
-                        FontSize="20"
-                        Margin="0 0 0 20"
-                        VerticalAlignment="Center"
-                        Style="{StaticResource TextStyle}"
-                        Text="Password"
-                        FontFamily="Century Gothic"
-                        />
-                    <PasswordBox
-                        Grid.Row="1"
-                        Name="PasswordTyped"
-                        Style="{StaticResource PasswordBoxStyle}">
-                        <PasswordBox.Resources>
-                            <Style TargetType="Border">
-                                <Setter Property="CornerRadius" Value="5"/>
-                            </Style>
-                        </PasswordBox.Resources>
-                    </PasswordBox>
-                </Grid>
-            </Border>
-            
-            <Border Grid.Row="2"
-                    Width="400">
-                <Grid>
-                    <Button
-                            Style="{StaticResource ChooseButtonStyle}"
-                            Command="{Binding LoginVm.ChooseDoctorCommand}"
-                            HorizontalAlignment="Left"
-                            Opacity="{Binding LoginVm.OpacitySide[0]}"
-                            Content="Doctor">
-                    </Button>      
-                    <Button 
-                            Style="{StaticResource ChooseButtonStyle}"
-                            Command="{Binding LoginVm.ChoosePatientCommand}"
-                            HorizontalAlignment="Right"
-                            Opacity="{Binding LoginVm.OpacitySide[1]}"
-                            Content="Patient">
-                        
-                    </Button>
-                </Grid>
-            </Border>
-            
-            <TextBlock Grid.Row="3"
-                       Visibility="{Binding LoginVm.ChooseModeVisibility}"
-                       Text="You need to choose if you are doctor or patient"
-                       VerticalAlignment="top"
-                       HorizontalAlignment="Center"
-                       FontWeight="Bold"
-                       Foreground="Red"
-                       Margin="0 0 0 0"/>
-            <Button Grid.Row="3" 
-                    Style="{StaticResource HomeButtonStyle}"
-                    Content="Submit" 
-                    Command="{Binding SubmitCommand}">
+            <Grid Grid.Row="1" Grid.Column="1"
+                Background="Aquamarine"
+                >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="6*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
                 
-            </Button>
+                <TextBlock
+                    Style="{StaticResource TextStyle}"
+                    Text="Sign In"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom"
+                    FontSize="50"
+                    FontFamily="Century Gothic"
+                />
+                
+                <Border Grid.Row="1"
+                    Width="400"
+                    Height="280"
+                    CornerRadius="10">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        
+                        <TextBlock
+                            Style="{StaticResource TextStyle}"
+                            FontSize="20"
+                            Margin="0 0 0 20"
+                            Text="Your Personal ID"
+                            FontFamily="Century Gothic"
+                            />
+                        <TextBox
+                                Grid.Row="0" 
+                            Text="{Binding LoginVm.UserId, Mode=OneWayToSource}"
+                            Name="IdTyped"
+                            Style="{StaticResource TextBoxStyle}">
+                            <TextBox.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="5"/>
+                                </Style>
+                            </TextBox.Resources>
+                        </TextBox>
+                        
+                        <TextBlock Grid.Row="1"
+                            FontSize="20"
+                            Margin="0 0 0 20"
+                            Style="{StaticResource TextStyle}"
+                            Text="Password"
+                            FontFamily="Century Gothic"
+                            />
+                        <PasswordBox
+                            Grid.Row="1"
+                            Name="PasswordTyped"
+                            Style="{StaticResource PasswordBoxStyle}"    
+                            local:PasswordHelper.Attach="True"
+                            local:PasswordHelper.Password="{Binding LoginVm.Password, Mode=OneWayToSource}">
+                            <PasswordBox.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="5"/>
+                                </Style>
+                            </PasswordBox.Resources>
+                        </PasswordBox>
+                    </Grid>
+                </Border>
+                
+                <Border Grid.Row="2"
+                        Width="400">
+                    <Grid>
+                        <Button
+                                Style="{StaticResource ChooseButtonStyle}"
+                                Command="{Binding LoginVm.ChooseDoctorCommand}"
+                                HorizontalAlignment="Left"
+                                Opacity="{Binding LoginVm.OpacitySide[0]}"
+                                Content="Doctor">
+                        </Button>      
+                        <Button 
+                                Style="{StaticResource ChooseButtonStyle}"
+                                Command="{Binding LoginVm.ChoosePatientCommand}"
+                                HorizontalAlignment="Right"
+                                Opacity="{Binding LoginVm.OpacitySide[1]}"
+                                Content="Patient">
+                            
+                        </Button>
+                    </Grid>
+                </Border>
+                
+                <TextBlock Grid.Row="3"
+                           Visibility="{Binding LoginVm.ChooseModeVisibility}"
+                           Text="You need to choose if you are doctor or patient"
+                           VerticalAlignment="top"
+                           HorizontalAlignment="Center"
+                           FontWeight="Bold"
+                           Foreground="Red"
+                           Margin="0 0 0 0"/>
+                <Button Grid.Row="3" 
+                        FontFamily="Century Gothic"
+                        Style="{StaticResource HomeButtonStyle}"
+                        Content="Submit" 
+                        Command="{Binding LoginVm.SubmitCommand}">
+                </Button>
+            </Grid>
         </Grid>
-    </Grid>
+        <Border
+            Background="Gray"
+            Opacity="0.7"
+            Visibility="{Binding LoginVm.WrongDataBoxVisibility}"
+        >
+        </Border>
+        <Border
+            Background="Black"
+            Height="133"
+            Width="267"
+            Visibility="{Binding LoginVm.WrongDataBoxVisibility}"
+        >
+            <Grid
+                Background="IndianRed"
+                >
+            <TextBlock
+                FontFamily="Century Gothic"
+                Foreground="White"
+                Height="47"
+                TextAlignment="Center"
+                VerticalAlignment="Top"
+                FontWeight="SemiBold"
+                Margin="0, 17 ,0,0"
+                FontSize="17"
+                Text="ID or password are incorrect.&#x0A; Try again."
+            />
+            <Button
+                    Style="{StaticResource HomeButtonStyle}"
+                    Content="OK" 
+                    FontFamily="Century Gothic"
+                    VerticalAlignment="Bottom"
+                    Background="Black"
+                    Width="93"
+                    Height="33"
+                    FontSize="20"
+                    Margin="13"
+                    Command="{Binding LoginVm.HideWrongDataBoxCommand}">
+            </Button>
+            </Grid> 
+        </Border>
+    </Grid> 
 </UserControl>

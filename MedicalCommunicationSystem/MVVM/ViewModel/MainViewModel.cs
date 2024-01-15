@@ -1,4 +1,5 @@
 using MedicalCommunicationSystem.Core;
+using MedicalCommunicationSystem.EventAggregator;
 
 namespace MedicalCommunicationSystem.MVVM.ViewModel;
 
@@ -7,7 +8,6 @@ public class MainViewModel : ObservableObject
     public RelayCommand LoginViewCommand { get; set; }
     public RelayCommand DoctorPanelViewCommand { get; set; }
     public RelayCommand PatientPanelViewCommand { get; set; }
-    public RelayCommand SubmitCommand { get; set; }
     public RelayCommand LogoutCommand { get; set; }
     public LoginViewModel LoginVm { get; set; }
     public DoctorPanelViewModel DoctorPanelVm { get; set; }
@@ -47,15 +47,17 @@ public class MainViewModel : ObservableObject
             CurrentView = PatientPanelVm;
         });
         
-        SubmitCommand = new RelayCommand(_ =>
+        // Nasluchuje eventow od agregatora
+        Mediator.GetInstance().Event += (_, e) =>
         {
-            if (LoginVm.OpacitySide[0] == LoginVm.OpacitySide[1])
-                LoginVm.ChooseModeVisibility = "Visible";
-            else if (LoginVm.OpacitySide[0] == "1")
-                CurrentView = DoctorPanelVm;
-            else
-                CurrentView = PatientPanelVm;
-        });   
+            CurrentView = e switch
+            {
+                // Sprawdza czy wiadomosc jest przeznaczona dla niego
+                MediatorMessage { MessageType: "OpenDoctorPanel" } => DoctorPanelVm,
+                MediatorMessage { MessageType: "OpenPatientPanel" } => PatientPanelVm,
+                _ => CurrentView
+            };
+        };       
         
         LogoutCommand = new RelayCommand(_ =>
         {
